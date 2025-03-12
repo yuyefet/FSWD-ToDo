@@ -1,0 +1,271 @@
+@import url("https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800;900&display=swap");
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: "Poppins", sans-serif;
+}
+
+body {
+    background-image: url('../IMAGES/index.jpg');
+    background-size: cover;
+    background-position: center;
+    background-attachment: fixed;
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin: 0;
+}
+
+/* Default wrapper */
+.wrapper {
+    width: 420px;
+    background: transparent;
+    border: 2px solid rgba(255, 255, 255, 0.2);
+    backdrop-filter: blur(15px);
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+    color: #FFF;
+    border-radius: 10px;
+    padding: 30px 40px;
+    text-align: center;
+    transition: width 0.3s ease;
+}
+
+/* Wider wrapper for To-Do page */
+.wrapper.todo-active {
+    width: 840px;
+    padding: 30px 40px;
+    margin: auto;
+}
+
+.wrapper h1 {
+    font-size: 36px;
+    text-align: center;
+    color: #681212;
+}
+
+.register-link p,  .register-link p a{
+    color: #681212;
+}
+
+.input-box {
+    position: relative;
+    width: 100%;
+    height: 60px;
+    margin: 30px 0;
+}
+
+.input-box input {
+    width: 100%;
+    height: 100%;
+    background: transparent;
+    border: none;
+    outline: none;
+    border: 2px solid rgba(255, 255, 255, 0.5);
+    border-radius: 40px;
+    font-size: 18px;
+    color: #681212;
+    padding: 20px 60px 20px 20px;
+}
+
+.input-box input::placeholder {
+    color: #681212;
+}
+
+.btn {
+    width: 100%;
+    height: 50px;
+    background: white;
+    color: #681212;
+    border: none;
+    outline: none;
+    border-radius: 40px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    cursor: pointer;
+    font-size: 18px;
+    font-weight: 600;
+    margin: 20px 0;
+}
+
+
+
+.register-link {
+    font-size: 14.5px;
+    text-align: center;
+}
+
+a {
+    color: #fff;
+    text-decoration: none;
+    font-weight: 600;
+}
+
+.register-link p a:hover {
+    text-decoration: underline;
+}
+
+#todo-container, #search-container {
+    margin-top: 20px;
+    display: flex;
+    gap: 10px;
+    align-items: center;
+    position: relative;
+}
+
+#todo-container input, #search-container input {
+    flex: 1;
+    padding: 15px;
+    font-size: 18px;
+    border-radius: 10px;
+    border: 1px solid #ccc;
+}
+
+#todo-container button, #search-container button {
+    padding: 15px 20px;
+    background-color: #4CAF50;
+    color: white;
+    border: none;
+    border-radius: 10px;
+    cursor: pointer;
+    font-size: 18px;
+}
+
+#todo-container button:hover {
+    background-color: #45a049;
+}
+
+/* Scrollable Container for Task List */
+#todoListContainer {
+    max-height: 400px; 
+    overflow-y: auto; 
+    margin-top: 20px;
+    padding-right: 10px;
+}
+
+#todoList {
+    margin-top: 20px;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
+.todo-item {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 15px;
+    border: 1px solid rgba(0, 0, 0, 0.1);
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    border-radius: 10px;
+    opacity: 1;
+    transition: opacity 0.3s ease, transform 0.3s ease;
+    color: black; 
+    background-color: #e4dbdbb5; 
+}
+
+.todo-item:hover {
+    transform: scale(1.02);
+}
+
+.todo-text {
+    flex: 1; /* Allow the text to take up remaining space */
+    white-space: nowrap; 
+    overflow: hidden; 
+    text-overflow: ellipsis; /* Add "..." if text is too long */
+    margin-right: 10px;
+}
+
+/* Style for tasks with a passed deadline */
+.past-deadline {
+    color: rgb(215, 3, 3) !important;
+    font-weight: bold;
+}
+
+.todo-item.completed {
+    opacity: 0.6;
+    text-decoration: line-through;
+}
+
+button.delete {
+    background-color: red;
+    color: white;
+    border: none;
+    border-radius: 10px;
+    padding: 12px 20px;
+    cursor: pointer;
+    font-size: 16px;
+    margin-left: 10px;
+}
+
+button.delete:hover {
+    background-color: rgb(215, 3, 3);
+}
+
+button.done {
+    background-color: orange;
+    color: white;
+    border: none;
+    border-radius: 10px;
+    padding: 12px 20px;
+    cursor: pointer;
+    font-size: 16px;
+    margin-right: 10px;
+}
+
+button.done:hover {
+    background-color: darkorange;
+}
+
+/* Popup Container */
+.popup {
+    display: none;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.5);
+    justify-content: center;
+    align-items: center;
+    display: flex;
+}
+
+
+.popup-content {
+    background: white;
+    padding: 30px;
+    border-radius: 15px;
+    box-shadow: 0 0 15px rgba(0, 0, 0, 0.3);
+    text-align: center;
+    width: 500px;
+    max-width: 80%;
+    min-width: 300px;
+}
+.popup-content .btn{
+    color: #000;
+}
+
+textarea {
+    resize: none;
+    width: 100%;
+    height: 250px;
+    line-height: 1.8;
+    padding: 15px;
+    font-size: 18px;
+    border-radius: 5px;
+    border: 1px solid #ccc;
+    box-sizing: border-box;
+}
+
+#editDeadline {
+    font-size: 18px;
+    padding: 10px;
+    width: 100%;
+    height: 45px;
+    border-radius: 5px;
+    border: 1px solid #ccc;
+    box-sizing: border-box;
+}
+

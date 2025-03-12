@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ToDo - Login</title>
+    <link rel="stylesheet" href="../CSS/ClientSPA.css">
+</head>
+<body>
+    <div class="wrapper">
+        <!-- Login Template -->
+        <template id="login-template">
+            <form id="loginForm">
+                <h1>Login</h1>
+                <div class="input-box">
+                    <input id="username" type="text" placeholder="Username" required>
+                </div>
+                <div class="input-box">
+                    <input id="password" type="password" placeholder="Password" required>
+                </div>
+                <button type="submit" class="btn">Login</button>
+                <div class="register-link">
+                    <p>Don't have an account? <a href="#" onclick="goToRegistration()">Register</a></p>
+                </div>
+            </form>
+        </template>
+
+        <!-- Registration Template -->
+        <template id="registration-template">
+            <form id="registerForm">
+                <h1>Register</h1>
+                <div class="input-box">
+                    <input id="fullname" type="text" placeholder="Full Name" required>
+                </div>
+                <div class="input-box">
+                    <input id="username" type="text" placeholder="Username" required>
+                </div>
+                <div class="input-box">
+                    <input id="email" type="email" placeholder="Email" required>
+                </div>
+                <div class="input-box">
+                    <input id="password" type="password" placeholder="Password" required>
+                </div>
+                <div class="input-box">
+                    <input id="confirmPassword" type="password" placeholder="Confirm Password" required>
+                </div>
+                <button type="submit" class="btn">Register</button>
+                <div class="register-link">
+                    <p>Already have an account? <a href="#" onclick="goToLogin()">Login</a></p>
+                </div>
+            </form>
+        </template>
+
+        <!-- To-Do Template -->
+        <template id="todo-template">
+            <div id="todo-wrapper">
+                <div id="search-container">
+                    <input type="text" id="searchTodo" placeholder="Search tasks...">
+                    <button class="btn" onclick="search()">Search</button>
+                </div>                
+                <div id="todo-container">
+                    <input type="text" id="newTodo" placeholder="Add a new task">
+                    <button class="btn" onclick="addTodo()">Add Task</button>
+                </div>
+                <!-- Scrollable Task List -->
+                <div id="todoListContainer">
+                    <div id="todoList"></div>
+                </div>
+            </div>
+        </template>
+
+        <!-- Edit Popup Template -->
+        <template id="edit-popup-template">
+            <div id="editPopup" class="popup">
+                <div class="popup-content">
+                    <h2>Edit Task</h2>
+                    <textarea id="editTodoText" placeholder="Edit task"></textarea>
+                    <input type="date" id="editDeadline">
+                    <button class="btn" onclick="clearDeadline()">Clear Deadline</button>
+                    <button class="btn" onclick="saveEdit()">Save</button>
+                    <button class="btn" onclick="closePopup()">Cancel</button>
+                </div>
+            </div>
+        </template>
+
+        
+        
+
+
+        <div id="form-container"></div>
+    </div>
+    <script src="../JS/Databases/UsersDB.js"></script>
+    <script src="../JS/Databases/TasksDB.js"></script>
+    <script src="../JS/Databases/DBAPI.js"></script>
+    <script src="../JS/Servers/TasksServer.js"></script>
+    <script src="../JS/Servers/UsersServer.js"></script>
+    <script src="../JS/FAJAX/Network.js"></script>
+    <script src="../JS/FAJAX/FXMLHttpRequest.js"></script>
+    <script src="../JS/ClientSPA.js"></script>
+</body>
+</html>
